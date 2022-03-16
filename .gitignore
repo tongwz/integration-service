@@ -1,0 +1,5 @@
+pkg/*
+.idea
+src/integration.service/conf/app.ini
+src/integration.service/integrationService
+src/integration.service/dump.rdb
