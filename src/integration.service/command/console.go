@@ -25,6 +25,8 @@ var ConsoleCmd = &cobra.Command{
 func Register()  {
 	var consoleList []console.IConsole
 	consoleList = append(consoleList, new(console.FilesRemove))
+	consoleList = append(consoleList, new(console.RepairMediaData))
+	consoleList = append(consoleList, new(console.RepairWechatBind))
 
 	for _, c := range consoleList {
 		cmd := &cobra.Command{

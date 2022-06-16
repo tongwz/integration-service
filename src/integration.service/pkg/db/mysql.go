@@ -6,7 +6,6 @@ import (
 	"github.com/jinzhu/gorm"
 	"integration.service/pkg/logging"
 	"integration.service/pkg/setting"
-	"net/url"
 	"time"
 )
 
@@ -47,8 +46,8 @@ func getMysqlClient(charset string) (*gorm.DB, error) {
 	}
 	protocol := fmt.Sprintf(
 		"%s:%s@tcp(%s)/%s?charset=%s&parseTime=True&loc=Local",
-		url.QueryEscape(config.Key("user").MustString("admin")),
-		url.QueryEscape(config.Key("password").MustString("admin")),
+		config.Key("user").MustString("admin"),
+		config.Key("password").MustString("admin"),
 		config.Key("host").String(),
 		config.Key("name").String(),
 		charset,

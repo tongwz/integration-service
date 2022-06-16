@@ -1,20 +1,89 @@
 #debug or release
-RUN_MODE = debug
+run_mode = debug
+#不需要删除文件的企业id
+except_company_id = 16
+#如果路径中是/data 在我们生产中的路径就是 /data2，这块我们需要替换一下 如果是生产
+file_base_path = "/data2/wwwroot/image-server-api/public/"
+
 
 [app]
-PAGE_SIZE = 10
-JWT_SECRET = 23347$040412
+# test 测试环境 pro 生产环境
+env = pro
+page_size = 2000
+jwt_secret = 23347$040412
 
 [server]
-HTTP_PORT = 8097
-READ_TIMEOUT = 60
-WRITE_TIMEOUT = 60
+http_port = 8097
+read_timeout = 60
+write_timeout = 60
 
+# 这个是老的 企微数据库 （已弃用）
 [database]
-TYPE = mysql
-USER = root
-PASSWORD = root
+is_log_mode = true
+type = mysql
+user = sscf_all
+password = xxx
 #127.0.0.1:3306
-HOST = 47.111.2.156:3306
-NAME = transfer
-TABLE_PREFIX = blog_
+host = xxx:3306
+name = company_module
+table_prefix = cm_
+
+[mysql_yy] # 盈亚的企微聊天数据库
+is_log_mode = true
+type = mysql
+user = xxx
+password = xxx
+host = 111.111.111.111:3306
+name = sscf_company_module
+table_prefix = cm_
+
+[mysql_hz] # 杭州的企微聊天数据库
+is_log_mode = true
+type = mysql
+user = xxx
+password = xxx
+host = 111.111.111.111:3306
+name = sscf_company_module
+table_prefix = cm_
+
+[mysql_hydrus] # 合规风控数据库处理
+is_log_mode = true
+type = mysql
+user = xxx
+password = xxx
+host = 11.11.11.11:3306
+name = hydrus-admin
+#table_prefix = cm_
+
+[mongodb] # 这个是image图片服务器mongodb的存储环境
+port = 17017
+#user =
+#password =
+host = 11.11.11.11
+name = sscf_stock_images
+prefix = sscf_
+
+[redis]
+host = 127.0.0.1:6379
+#password = 123456
+db = 1
+redis_prefix = integration:
+
+[image]
+yy_image = "http://xc.gp932.com"
+hz_image = "http://cc.gp932.com"
+
+attachment_upload_api = "/api/attachment/upload"
+
+attachment_show_api = "/api/attachment/show"
+
+[repair_media]
+#需要修复的表格名称
+need_repair_table_name_index=20225
+#临时文件存放地址
+tmp_file_path = "runtime/temp"
+#file_ext
+file_ext = "mp4"
+
+[repair_company_user]
+company_id = 17
